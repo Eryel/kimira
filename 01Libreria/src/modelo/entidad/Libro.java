@@ -1,0 +1,48 @@
+package modelo.entidad;
+
+public class Libro {
+
+	private String titulo;
+	private String editorial;
+	private int año_publicacion;
+	private String ISBN;
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getEditorial() {
+		return editorial;
+	}
+
+	public void setEditorial(String editorial) {
+		this.editorial = editorial;
+	}
+
+	public int getAño_publicacion() {
+		return año_publicacion;
+	}
+
+	public void setAño_publicacion(int año_publicacion) {
+		this.año_publicacion = año_publicacion;
+	}
+
+	public String getISBN() {
+		return ISBN;
+	}
+
+	public void setISBN(String iSBN) {
+		ISBN = iSBN;
+	}
+
+	@Override
+	public String toString() {
+		return "Libro [titulo=" + titulo + ", editorial=" + editorial + ", año_publicacion=" + año_publicacion
+				+ ", ISBN=" + ISBN + "]";
+	}
+
+}

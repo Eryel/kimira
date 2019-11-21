@@ -1,0 +1,17 @@
+package modelo.negocio;
+
+import java.util.ArrayList;
+
+import modelo.entidad.Libreria;
+
+public class GestorLibros {
+	
+	private Libreria libreria;
+
+	
+	
+	
+	
+	
+
+}

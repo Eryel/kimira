@@ -1,0 +1,25 @@
+package modelo.negocio;
+
+import java.util.ArrayList;
+
+import modelo.entidad.Libreria;
+
+public class GestorLibros {
+	
+	private Libreria libreria;
+
+	public Libreria getLibreria() {
+		return libreria;
+	}
+
+	public void setLibreria(Libreria libreria) {
+		this.libreria = libreria;
+	}
+
+	
+	
+	
+	
+	
+
+}

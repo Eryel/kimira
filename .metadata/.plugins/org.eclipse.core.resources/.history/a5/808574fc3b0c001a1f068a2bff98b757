@@ -1,0 +1,54 @@
+package vista;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import modelo.entidad.Libro;
+import modelo.negocio.GestorLibros;
+
+public class MainLibreria {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner (System.in);
+		String opcion  = "0"; //profe iguala a 0
+		
+		
+		GestorLibros gl =new GestorLibros();
+		ArrayList<Libro> libreria = new ArrayList<Libro>();
+		
+		do {
+			System.out.println("1. Alta libros");
+			System.out.println("2. Consulta libros");
+			System.out.println("3. Busqueda libros por titulo");
+			System.out.println("4. Busqueda por ISBN");
+			System.out.println("5. Busqueda por editorial");
+			opcion =sc.nextLine();
+			if (opcion.equals("1")) {
+				System.out.println("Bienvenido al alta, introduzca el nombre del libro a dar de alta");
+				String titulo =sc.nextLine();
+				System.out.println("Ahora introduzca la editorial: ");
+				String editorial=sc.nextLine();
+				System.out.println("Cual es el año de publicacion...");
+				String año_publicacion =sc.nextLine();
+				System.out.println("Introduzca por ultimo su ISBN");
+				String ISBN= sc.nextLine();
+				
+				int iaño = Integer.parseInt(año_publicacion);
+				
+				
+				
+			}
+				
+			
+		
+		
+		
+		
+		
+		
+
+	}
+
+}
