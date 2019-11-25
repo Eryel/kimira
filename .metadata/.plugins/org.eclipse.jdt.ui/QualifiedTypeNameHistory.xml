@@ -12,4 +12,7 @@
 <fullyQualifiedTypeName name="bean.Profesor"/>
 <fullyQualifiedTypeName name="bean.Alumno"/>
 <fullyQualifiedTypeName name="bean.Curso"/>
+<fullyQualifiedTypeName name="org.omg.CORBA.PERSIST_STORE"/>
+<fullyQualifiedTypeName name="main.MainEstatico"/>
+<fullyQualifiedTypeName name="entidad.Persona"/>
 </qualifiedTypeNameHistroy>

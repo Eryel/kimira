@@ -6,7 +6,8 @@ public class Persona {
 	private String nombre;
 	private int edad;
 	
-	//mientras que los de arriba dependeran del objeto que se cree (new) este numeroPersonas no necesitara objeto(new) solo declarar donde esta
+	//mientras que los de arriba dependeran del objeto que se cree (new) este numeroPersonas no necesitara objeto(new) solo declarar donde esta y existira siempre
+	//no como los de arriba que siempre necesitaran un new asociado a un objeto.
 	public static int numeroPersonas = 0;
 	
 	
