@@ -1,0 +1,65 @@
+package bean;
+
+public class Curso {
+
+	// Generamos las variables
+	String nombreCurso = "";
+	int horas = 0;
+	int idCurso = 0;
+	double precio = 0;
+
+	// Generamos los constructores pertinentes uno vacio y el otro con todo.
+	public Curso() {
+		super();
+	}
+
+	public Curso(String nombrecurso, int horas, int idcurso, double precio) {
+		super();
+		this.nombreCurso = nombrecurso;
+		this.horas = horas;
+		this.idCurso = idcurso;
+		this.precio = precio;
+	}
+
+	// Generamos los getters and setters
+
+	public String getNombrecurso() {
+		return nombreCurso;
+	}
+
+	public void setNombrecurso(String nombrecurso) {
+		this.nombreCurso = nombrecurso;
+	}
+
+	public int getHoras() {
+		return horas;
+	}
+
+	public void setHoras(int horas) {
+		this.horas = horas;
+	}
+
+	public int getIdcurso() {
+		return idCurso;
+	}
+
+	public void setIdcurso(int idcurso) {
+		this.idCurso = idcurso;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	// generamos el metodo ToString
+	@Override
+	public String toString() {
+		return "Curso [nombrecurso=" + nombreCurso + ", horas=" + horas + ", idcurso=" + idCurso + ", precio=" + precio
+				+ "]";
+	}
+
+}

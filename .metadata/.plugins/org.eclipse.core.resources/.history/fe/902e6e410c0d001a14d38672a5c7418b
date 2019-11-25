@@ -1,0 +1,74 @@
+package bean;
+
+public class Profesor {
+
+	// Declaramos variables de la clase profesor
+	String dni = "";
+	String nombre = "";
+	String sexo = "";
+	int edad = 0;
+	double salario = 0;
+
+	// realizamos los constructores pertinentes
+	public Profesor(String dni, String nombre, String sexo, int edad, double salario) {
+		super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.sexo = sexo;
+		this.edad = edad;
+		this.salario = salario;
+	}// este con todo
+
+	public Profesor() {
+		super();
+	}// este vacio
+
+	// ahora generamos getters and setters
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+//Generamos el metodo ToString
+	@Override
+	public String toString() {
+		return "Profesor [dni=" + dni + ", nombre=" + nombre + ", sexo=" + sexo + ", edad=" + edad + ", salario="
+				+ salario + "]";
+	}
+
+}

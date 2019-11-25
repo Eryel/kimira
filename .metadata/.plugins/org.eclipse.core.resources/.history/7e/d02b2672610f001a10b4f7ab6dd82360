@@ -1,0 +1,20 @@
+package main;
+
+import org.omg.CORBA.PERSIST_STORE;
+
+import entidad.Persona;
+
+public class MainEstatico {
+
+	public static void main(String[] args) {
+		// este metodo es estatico no esta ligado a ningun objeto, existe siempre sin necesidad de new
+		
+		
+		Persona p1 = new Persona();
+		//
+		p1.setNombre("Harry Calahan");
+		p1.setEdad(85);
+
+	}
+
+}
