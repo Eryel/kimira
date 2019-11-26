@@ -15,4 +15,5 @@
 <fullyQualifiedTypeName name="org.omg.CORBA.PERSIST_STORE"/>
 <fullyQualifiedTypeName name="main.MainEstatico"/>
 <fullyQualifiedTypeName name="entidad.Persona"/>
+<fullyQualifiedTypeName name="entidad.Pez"/>
 </qualifiedTypeNameHistroy>
