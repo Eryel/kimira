@@ -13,6 +13,7 @@ public class MainEmpresa {
 		
 		
 		ArrayList<Empleado> listaE =new ArrayList<Empleado>();
+		
 	
 		
 		Directores je = new Directores();
@@ -69,12 +70,27 @@ public class MainEmpresa {
 		a.setEdad(59);
 		a.setSalarioBase(21000.00);
 
+		ArrayList<Empleado> all = new ArrayList<Empleado>();
+		all.add(pro1);
+		all.add(pro2);
+		all.add(pro3);
+		all.add(pro4);
+		all.add(a);
+		all.add(b);
+		all.add(je);
+		
 		
 		
 
 
 		
-		System.out.println(je);
+		System.out.println("El sueldo total del director es "+je.sTotal()+" Euros");
+		System.out.println("El sueldo total de el jefe de proyecto 1 es "+jp1.sTotal()+" Euros");
+		System.out.println("El sueldo total de el jefe de proyecto 2 es "+jp2.sTotal()+" Euros");
+		System.out.println("El sueldo total de programador 1  es "+pro1.sTotal()+" Euros");
+		System.out.println("El sueldo total de programador 2  es "+pro2.sTotal()+" Euros");
+		System.out.println("El sueldo total de programador 3  es "+pro3.sTotal()+" Euros");
+		System.out.println("El sueldo total de programador 4  es "+pro4.sTotal()+" Euros");
 	}
 
 }

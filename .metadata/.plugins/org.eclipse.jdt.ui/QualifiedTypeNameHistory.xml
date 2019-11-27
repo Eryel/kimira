@@ -6,7 +6,6 @@
 <fullyQualifiedTypeName name="modelo.negocio.GestorLibros"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="modelo.entidad.Libro"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="modelo.entidad.Libreria"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="bean.Profesor"/>
@@ -15,5 +14,16 @@
 <fullyQualifiedTypeName name="org.omg.CORBA.PERSIST_STORE"/>
 <fullyQualifiedTypeName name="main.MainEstatico"/>
 <fullyQualifiedTypeName name="entidad.Persona"/>
+<fullyQualifiedTypeName name="entidad.Tiburon"/>
 <fullyQualifiedTypeName name="entidad.Pez"/>
+<fullyQualifiedTypeName name="entidad.PezPayaso"/>
+<fullyQualifiedTypeName name="entidad.Trucha"/>
+<fullyQualifiedTypeName name="entidad.Placton"/>
+<fullyQualifiedTypeName name="entidad.Animal"/>
+<fullyQualifiedTypeName name="entidad.Oso"/>
+<fullyQualifiedTypeName name="entidad.Programador"/>
+<fullyQualifiedTypeName name="entidad.Directores"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="entidad.Empleado"/>
+<fullyQualifiedTypeName name="entidad.JefeProyecto"/>
 </qualifiedTypeNameHistroy>

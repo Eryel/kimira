@@ -1,5 +1,7 @@
 package entidad;
 
+import java.util.ArrayList;
+
 public abstract class Empleado {
 
 	private String dni = null;
@@ -7,6 +9,7 @@ public abstract class Empleado {
 	private double  salarioBase = 0;
 	private int edad = 0;
 	public abstract double sTotal();
+	
 	
 	
 
@@ -36,7 +39,7 @@ public abstract class Empleado {
 	}
 	@Override
 	public String toString() {
-		return "Empleado [dni=" + dni + ", nombre=" + nombre + ", salarioBase=" + salarioBase + ", edad=" + edad + "]";
+		return getClass().getSimpleName()+ " con dni " + dni + ", su nombre es " + nombre + ", su salario base es " + salarioBase + " y su edad" + edad + "años.]";
 	}
 	
 

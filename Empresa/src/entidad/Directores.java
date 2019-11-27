@@ -15,9 +15,17 @@ public class Directores extends Empleado {
 	}
 	@Override
 	public String toString() {
-		return "Directores [listaE=" + listaE + "]";
+		return "Directores [listaE=" + listaE + ", getNombre()=" + getNombre() + ", getEdad()=" + getEdad() + "]";
+	}
+	@Override
+	public double sTotal() {
+		// TODO Auto-generated method stub
+		return getSalarioBase()+(listaE.size()*100);
+		
+		
 	}
 
+	
 	
 	 
 	 
