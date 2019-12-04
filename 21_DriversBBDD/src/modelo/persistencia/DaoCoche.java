@@ -1,3 +1,4 @@
+
 package modelo.persistencia;
 
 import java.sql.Connection;
@@ -5,253 +6,321 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TimeZone;
 
 import modelo.entidad.Coche;
 
 /**
- * Esta clase se encarga de la persistencia con la clase. Esta clase hara un Crud (Create Read Update Delete) 
- * sobre la entidad coche. Un DAO es el acronimo de DataAccessObject y es un objeto que suele encargarse de interactuar 
- * los objetos con la base de datos.
+ * Esta clase se encarga de la persistencia con la clase
+ * coche. Esta clase hará un CRUD (Create, Read, Update, Delete)
+ * sobre la entidad coche. 
  * 
- * Nosotros vamosa desarrollar este DAO mediante el Api de java JDBC (java data base conection), un api
- * es un conjunto de librerias que porporcionan  una funcionalidad, y en este caso nos daran la funcionalidad
- * para conectarnos a una base de datos.
- * Hay otras APIS para base de datos como por ejemplo JPA(Java persistence API)
+ * Un DAO es el acronimo de DataAccessObject
+ * y es un objeto que suele encargase de interactuar los objetos
+ * coche con la BBDD.
  * 
- *  Para usar JDBC o JPA, necesitamos los drivers de conexion que ha hecho el proveedor de conexion de nuestra base de datos, en nuestro 
- *  caso MYSQL, dependiendo de la base de datos a la que nos conectemos necesitaremos unos drivers u otros ( por ejemplo ORACLE; POSTGRES, SQLite, etc..)
- *  asi pues lo primero que tenemos que hacer es obtener los drivers e incluirlos en nuestro proyecto, en nuestro caso necesitamos los drivers de MYSQL 8.0,
- *  (ojo con la version) que los meteremos en la carpeta lib (que tenemos que crear) y a continuacion decirle a java que tiene que utilizar 
- *  dichos drivers, para ello tenemos que modificar el classpath de nuestra aplicacion Java.
- *  Para modificar el classPath boton derecho sobre el proyecto y BuildPath -- configure -- ClassPath.
- *  
+ * Nosotros vamos a desarrollar este DAO mediante el API de java
+ * JDBC (Java Data Base Connection), un API es un conjunto de
+ * librerías que proporcionan una funcionalidad, y en este
+ * caso nos darán la funcionalidad para conectarnos a una base
+ * de datos. Hay otras APIs para acceso a datos como por ejemplo
+ * JPA (Java Persistence API)
  * 
- * @author jose
+ * Para usar JDBC o JPA, necesitamos los drivers de conexion
+ * que ha hecho el proveedor de nuestra base de datos, en 
+ * nuestro caso MySQL, dependiendo del la base de datos a la
+ * que nos conectemos, necesitaremos unos driver u otros 
+ * por ejemplo Oracle, Postgres, SQLite, etc.
+ * 
+ * Así pues lo primero que tenemos que hacer es objeter los drivers
+ * y incluirnos en nuestro proyecto. En nuestro caso necesitamos
+ * los drivers de MySql 8.0 (ojo con la version), que los meteremos
+ * en la carpeta lib (que tenemos que crear) y a continiuacion
+ * dedirle a Java que tiene que utilizar dichos drivers, para ello
+ * tenemos que modificar el classpath de nuestra aplicacion java
+ * Para modificar el classpath boton derecho sobre el proyecto
+ * -> Build Path -> Configure build Path
+ * 
+ * @author felix
  * @see Coche
  * @since 04-12-2019
- *@version 1.0
+ * @version 1.0
  * 
  */
-
 public class DaoCoche {
 
-	
+	//Esto es una interfaz, el objeto que realiza la conexion
+	//a la bbdd estan dentro de las librerias de MySql
 	private Connection conexion;
 	
-	
-	/*static {
-		
+	//Bloque estatico, este bloque se ejecutará
+	//justo al cargar esta clase en la JVM, se ejecutará
+	//antes que el metodo main. Esto para versiones
+	//anteriores a Java 1.7
+	/*
+	static {
+		//Le decimos a java que carge en memoria el driver
+		//de conexión con la bbdd, para poder recuperarlo
+		//cuando hagamos la conexión
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			
-			System.out.println("Driver no cargado");
 			// TODO Auto-generated catch block
+			System.out.println("Driver NO cargado");
 			e.printStackTrace();
-		}		
-		
-	}
+		}
+	}*/
 	
-	*/
 	public boolean abrirConexion() {
-		//protocolo: subprotocolo//ip:puerto/nombre_esquema
+		//protocolo:subprotocolo//IP:PUERTO/NOMBRE_ESQUEMA
+		//esta url depende de la bbddd a la que nos conectemos
 		String url = "jdbc:mysql://localhost:3306/jdbc?serverTimezone=" + TimeZone.getDefault().getID();
-		String usu = "root";
-		String pass = "root";
+		String usuario = "root";
+		String password = "";
 		
-		//getconection me devuelve un objeto que lleva la conexion a la bbdd
-		//Esta clase (driverManager) es la clase que lleva el control del driver.
-		//Estamos aploando la inyeccion de dependencias es de cir no creo el objeto aqui (no hago new), es el metodo getconection
-		//el que me va a crear el objeo en mi lugar
-		
+		//getConeccion me devuelve un objeto que lleva la conexión
+		//a la bbdd, esta clase (DriverManager) es la clase
+		//que lleva el control del driver
+		//Estamos aplicando la Inyeccion de dependecia, es decir,
+		//no creo el objeto aqui (no hago new), sino que es
+		//el metodo getConnection el que me crea el objeto
+		//en mi lugar
 		try {
-			conexion = DriverManager.getConnection(url, usu, pass);
+			conexion = DriverManager.getConnection(url, usuario, password);
 			return true;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
-		
-		
 	}
-	public boolean cerrarConexiones() {
+	
+	public boolean cerrarConexion() {
 		try {
 			conexion.close();
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		return false;
+			return false;
 		}
-		
-		
-		//alta coche
 	}
+	
 	public boolean alta(Coche coche) {
 		if(!abrirConexion()) {
 			return false;
 		}
-		boolean alta= true;
 		
-		//asi no se debe hacer asique lo dejo comentado
+		//así no se debe hacer, porque no es optimo ni seguro 
+		//para el motor de la base de datos
 		/*
-		String query ="insert into coches (matricula,marca,modelo) "
-				+ "value("+coche.getMatricula()+","+coche.getMarca()+","+coche.getModelo()+")";*/
+		String query = "insert into coches (matricula,marca,modelo) "
+				+ " value("+ coche.getMatricula()+
+				"," + coche.getMarca() + ","+
+				coche.getModelo() +	")";*/
+		//como hay que hacer es con consultas preparadas, parametrizadas
+		String query = "insert into coches (matricula, " +
+		"marca,modelo) values(?,?,?)";
 		
-		/*
-		 * como hay que hacerlo es con consultadas preparadas, parametrizadas 
-		 */
-		
-		String query = "insert into coches (matricula,marca,modelo) values(?,?,?)";
 		try {
-			//le decimos ala conexion que nos haga una consulta parametrizada a  partir de la query anterior
-			PreparedStatement ps =conexion.prepareStatement(query);
+			//le decimos a la conexion que nos haga una consulta
+			//parametrizada a partir de la query anterior
+			PreparedStatement ps = conexion.prepareStatement(query);
+			//sustimos la primera interrogante por la matricula
+			//del coche
 			ps.setString(1, coche.getMatricula());
-			//substituimos la primera interrogante por la matricula
 			ps.setString(2, coche.getMarca());
 			ps.setString(3, coche.getModelo());
 			
-			//esta funcion me devuelve el numero de filas afectadas
-			int numeroFilas =ps.executeUpdate();
+			//esta funcion me devuelve el numero de filas
+			//afectadas
+			int numeroFilas = ps.executeUpdate();
 			if(numeroFilas == 0) {
 				return false;
 			}else {
 				return true;
 			}
 		} catch (SQLException e) {
-			System.out.println("Error al insertar");
-			// TODO Auto-generated catch block
+			System.out.println("Error en el insertar");
 			e.printStackTrace();
 			return false;
-		}finally {//el bloque finally se va a ejecutar siempre!!
-			//no importa si ha pasado por el bloque try o catch
-			cerrarConexiones();
-			
+		} finally {
+		//el bloque finally se va a ejecutar SIEMPRE
+		//no importa si ha pasado por el bloque try o
+		//por el bloque catch
+			cerrarConexion();
 		}
 	}
-	
-	//modificar coche
-	
 	
 	public boolean modificar(Coche coche) {
 		if(!abrirConexion()) {
 			return false;
-		}
-		
-		//asi no se debe hacer asique lo dejo comentado
+		}		
+		//así no se debe hacer, porque no es optimo ni seguro 
+		//para el motor de la base de datos
 		/*
-		String query ="insert into coches (matricula,marca,modelo) "
-				+ "value("+coche.getMatricula()+","+coche.getMarca()+","+coche.getModelo()+")";*/
+		String query = "insert into coches (matricula,marca,modelo) "
+				+ " value("+ coche.getMatricula()+
+				"," + coche.getMarca() + ","+
+				coche.getModelo() +	")";*/
+		//como hay que hacer es con consultas preparadas, parametrizadas
+		String query = "update coches set matricula=?, marca=?"
+				+ ", modelo=? where id=?";
 		
-		/*
-		 * como hay que hacerlo es con consultadas preparadas, parametrizadas 
-		 */
-		
-		String query = "update coches set matricula=?,marca=?,modelo=? where id=?";
 		try {
-			//le decimos ala conexion que nos haga una consulta parametrizada a  partir de la query anterior
-			PreparedStatement ps =conexion.prepareStatement(query);
+			//le decimos a la conexion que nos haga una consulta
+			//parametrizada a partir de la query anterior
+			PreparedStatement ps = conexion.prepareStatement(query);
+			//sustimos la primera interrogante por la matricula
+			//del coche
 			ps.setString(1, coche.getMatricula());
-			//substituimos la primera interrogante por la matricula
 			ps.setString(2, coche.getMarca());
 			ps.setString(3, coche.getModelo());
 			ps.setInt(4, coche.getId());
 			
-			//esta funcion me devuelve el numero de filas afectadas
-			int numeroFilas =ps.executeUpdate();
+			//esta funcion me devuelve el numero de filas
+			//afectadas
+			int numeroFilas = ps.executeUpdate();
 			if(numeroFilas == 0) {
 				return false;
 			}else {
 				return true;
 			}
 		} catch (SQLException e) {
-			System.out.println("Error al modificar");
-			// TODO Auto-generated catch block
+			System.out.println("Error en el insertar");
 			e.printStackTrace();
 			return false;
-		}finally {//el bloque finally se va a ejecutar siempre!!
-			//no importa si ha pasado por el bloque try o catch
-			cerrarConexiones();
-			
+		} finally {
+		//el bloque finally se va a ejecutar SIEMPRE
+		//no importa si ha pasado por el bloque try o
+		//por el bloque catch
+			cerrarConexion();
 		}
 	}
 	
-	//baja coche
 	public boolean borrar(Coche coche) {
 		if(!abrirConexion()) {
 			return false;
-		}
+		}		
 		
-	
 		String query = "delete from coches where id=?";
+		
 		try {
-			//le decimos ala conexion que nos haga una consulta parametrizada a  partir de la query anterior
-			PreparedStatement ps =conexion.prepareStatement(query);
-			
+			//le decimos a la conexion que nos haga una consulta
+			//parametrizada a partir de la query anterior
+			PreparedStatement ps = conexion.prepareStatement(query);
+			//sustimos la primera interrogante por la matricula
+			//del coche
 			ps.setInt(1, coche.getId());
 			
-			//esta funcion me devuelve el numero de filas afectadas
-			int numeroFilas =ps.executeUpdate();
+			//esta funcion me devuelve el numero de filas
+			//afectadas
+			int numeroFilas = ps.executeUpdate();
 			if(numeroFilas == 0) {
 				return false;
 			}else {
 				return true;
 			}
 		} catch (SQLException e) {
-			System.out.println("Error al borrar");
-			// TODO Auto-generated catch block
+			System.out.println("Error en el insertar");
 			e.printStackTrace();
 			return false;
-		}finally {//el bloque finally se va a ejecutar siempre!!
-			//no importa si ha pasado por el bloque try o catch
-			cerrarConexiones();
-			
+		} finally {
+		//el bloque finally se va a ejecutar SIEMPRE
+		//no importa si ha pasado por el bloque try o
+		//por el bloque catch
+			cerrarConexion();
 		}
 	}
 	
-	//leer coches
 	public Coche obtener(int id) {
 		if(!abrirConexion()) {
 			return null;
-		}
+		}		
 		
+		String query = "select id,matricula,marca,modelo from "
+				+ "coches where id=?";
 		
-		String query = "select id,matricula,marca,modelo from coches where id=?";
 		try {
-			//le decimos ala conexion que nos haga una consulta parametrizada a  partir de la query anterior
-			PreparedStatement ps =conexion.prepareStatement(query);
-			
+			//le decimos a la conexion que nos haga una consulta
+			//parametrizada a partir de la query anterior
+			PreparedStatement ps = conexion.prepareStatement(query);
+			//sustimos la primera interrogante por la matricula
+			//del coche
 			ps.setInt(1, id);
 			
-			//esta funcion me devuelve el numero de filas afectadas
-			ResultSet rs =ps.executeQuery();
+			//esta funcion me devuelve el numero de filas
+			//afectadas
+			ResultSet rs = ps.executeQuery();
+			//ResultSet es un objeto que tiene toda la lista
+			//de registros que ha devuelto la consulta
 			
-			Coche coche= null;
-			//resultset es un objeto que tiene toda la lista de registros que ha devuelto la consulta
-			//asi pues, podemos recorrer la lista
+			Coche coche = null;
+			
+			//asi pues, podemos recorrernos la lista
 			while(rs.next()) {//preguntamos si hay un registro mas
 				coche = new Coche();
-				coche.setId(rs.getInt(1));
+				coche.setId(rs.getInt(1));//el id esta en la primera posicion
+				coche.setMatricula(rs.getString(2));
+				coche.setMarca(rs.getString(3));
+				coche.setModelo(rs.getString(4));
+			}
+			return coche;
+		} catch (SQLException e) {
+			System.out.println("Error en el insertar");
+			e.printStackTrace();
+			return null;
+		} finally {
+		//el bloque finally se va a ejecutar SIEMPRE
+		//no importa si ha pasado por el bloque try o
+		//por el bloque catch
+			cerrarConexion();
+		}
+		
+	}
+	
+	public List<Coche> listar() {
+		if(!abrirConexion()) {
+			return null;
+		}		
+		
+		String query = "select id,matricula,marca,modelo from coches";
+		
+		try {
+			//le decimos a la conexion que nos haga una consulta
+			//parametrizada a partir de la query anterior
+			PreparedStatement ps = conexion.prepareStatement(query);
+			//esta funcion me devuelve el numero de filas
+			//afectadas
+			ResultSet rs = ps.executeQuery();
+			//ResultSet es un objeto que tiene toda la lista
+			//de registros que ha devuelto la consulta
+			
+			Coche coche = null;
+			List<Coche> listaCoches = new ArrayList<Coche>();
+			//asi pues, podemos recorrernos la lista
+			while(rs.next()) {//preguntamos si hay un registro mas
+				coche = new Coche();
+				coche.setId(rs.getInt(1));//el id esta en la primera posicion
 				coche.setMatricula(rs.getString(2));
 				coche.setMarca(rs.getString(3));
 				coche.setModelo(rs.getString(4));
 				
-				return coche;
-				
+				listaCoches.add(coche);
 			}
+			return listaCoches;
 		} catch (SQLException e) {
-			System.out.println("Error al leer");
-			// TODO Auto-generated catch block
+			System.out.println("Error en el insertar");
 			e.printStackTrace();
 			return null;
-		}finally {//el bloque finally se va a ejecutar siempre!!
-			//no importa si ha pasado por el bloque try o catch
-			cerrarConexiones();
-			
+		} finally {
+		//el bloque finally se va a ejecutar SIEMPRE
+		//no importa si ha pasado por el bloque try o
+		//por el bloque catch
+			cerrarConexion();
 		}
-		return null;
+		
 	}
-	
-	
 }
