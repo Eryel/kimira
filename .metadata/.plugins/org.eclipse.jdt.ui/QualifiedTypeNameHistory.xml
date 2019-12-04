@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.lang.Boolean"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="modelo.negocio.GestorLibros"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="modelo.entidad.Libro"/>
 <fullyQualifiedTypeName name="modelo.entidad.Libreria"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="bean.Profesor"/>
 <fullyQualifiedTypeName name="bean.Alumno"/>
 <fullyQualifiedTypeName name="bean.Curso"/>
@@ -22,8 +19,30 @@
 <fullyQualifiedTypeName name="entidad.Animal"/>
 <fullyQualifiedTypeName name="entidad.Oso"/>
 <fullyQualifiedTypeName name="entidad.Programador"/>
-<fullyQualifiedTypeName name="entidad.Directores"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="entidad.Empleado"/>
+<fullyQualifiedTypeName name="altaGest.altaEm"/>
 <fullyQualifiedTypeName name="entidad.JefeProyecto"/>
+<fullyQualifiedTypeName name="entidad.Directores"/>
+<fullyQualifiedTypeName name="main.MainEmpresa"/>
+<fullyQualifiedTypeName name="java.io.ObjectInputStream.GetField"/>
+<fullyQualifiedTypeName name="entidad.Empleado"/>
+<fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="negocio.GestorCalculadora"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="modelo.persistencia.DaoCoche"/>
+<fullyQualifiedTypeName name="java.lang.Class"/>
+<fullyQualifiedTypeName name="java.util.TimeZone"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="modelo.entidad.Coche"/>
 </qualifiedTypeNameHistroy>

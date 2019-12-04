@@ -157,12 +157,14 @@ public class Vista {
 						System.out.println(indice + " - " + ele);
 						indice++;
 					}
-					System.out.println("Seleccione 1 para ingresar empleados y 0  para salir: ");
-					String nl= sc.nextLine();
-					while (nl != "0") {
-						 String asa= sc.nextLine();
+					
+					
+					
+					
 						System.out.println("Seleccione el numero de empleado que desea ingresar en su plantilla, pulse 9 para salir: ");
+						String asa= sc.nextLine();
 						ArrayList<Empleado> gh =new ArrayList<Empleado>();
+						while (asa == "9")  {
 						if ( asa == "0") {
 							gh.add(a);
 							
@@ -172,11 +174,10 @@ public class Vista {
 							gh.add(pro1);
 						}else if (asa == "3") {
 							gh.add(pro2);
-						}else {
-							System.out.println("Concluyo.");
+						}
 						}
 					
-					}
+					
 					
 					
 
@@ -197,6 +198,8 @@ public class Vista {
 		} while (!opcion.equals("0"));
 		System.out.println("Adios, esperamos que vuelvas pronto.");
 
+
 	}
+
 
 }
