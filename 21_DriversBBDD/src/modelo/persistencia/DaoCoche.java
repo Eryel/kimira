@@ -78,7 +78,7 @@ public class DaoCoche {
 		//esta url depende de la bbddd a la que nos conectemos
 		String url = "jdbc:mysql://localhost:3306/jdbc?serverTimezone=" + TimeZone.getDefault().getID();
 		String usuario = "root";
-		String password = "";
+		String password = "root";
 		
 		//getConeccion me devuelve un objeto que lleva la conexión
 		//a la bbdd, esta clase (DriverManager) es la clase

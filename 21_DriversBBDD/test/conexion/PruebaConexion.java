@@ -9,4 +9,5 @@ public class PruebaConexion {
 	boolean estaConectado = daoCoche.abrirConexion();
 	System.out.println(estaConectado);
 	}
+	
 }
